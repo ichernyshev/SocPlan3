@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/name_hint"
+        android:inputType="textPersonName"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"/>
+
+    <EditText
+        android:id="@+id/etSecondName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/secondname_hint"
+        android:inputType="textPersonName"
+        android:layout_alignTop="@+id/etName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"/>
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/phone_hint"
+        android:inputType="phone"
+        android:layout_alignTop="@+id/etSecondName"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPhone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:text="Сохранить"/>
+
+</RelativeLayout>
