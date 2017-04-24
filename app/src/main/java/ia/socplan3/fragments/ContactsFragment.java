@@ -18,6 +18,7 @@ import ia.socplan3.AddContactActivity;
 import ia.socplan3.ContactLab;
 import ia.socplan3.OneContact;
 import ia.socplan3.R;
+import ia.socplan3.ViewContactActivity;
 
 public class ContactsFragment extends Fragment {
 
@@ -78,7 +79,7 @@ public class ContactsFragment extends Fragment {
         updateUI();
     }
 
-    private class ContactHolder extends RecyclerView.ViewHolder {
+    private class ContactHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private OneContact mOneContact;
 
@@ -88,6 +89,7 @@ public class ContactsFragment extends Fragment {
 
         public ContactHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             mNameTextView = (TextView) itemView.findViewById(R.id.list_item_name);
             mSecondNameTextView = (TextView) itemView.findViewById(R.id.list_item_secondname);
             mPhone = (TextView) itemView.findViewById(R.id.list_item_phone);
@@ -98,6 +100,12 @@ public class ContactsFragment extends Fragment {
             mNameTextView.setText(mOneContact.getName());
             mSecondNameTextView.setText(mOneContact.getSecondName());
             mPhone.setText(mOneContact.getPhone());
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = ViewContactActivity.newIntent(getActivity(), mOneContact.getId());
+            startActivity(intent);
         }
     }
 

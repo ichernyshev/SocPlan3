@@ -7,12 +7,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-import ia.socplan3.fragments.AddContactFragment;
+import java.util.UUID;
 
-public class ContactListActivity extends AppCompatActivity {
+import ia.socplan3.fragments.ViewContactFragment;
+
+public class ViewContactActivity extends AppCompatActivity {
+
+    public static final String EXTRA_CONTACT_ID = "ia.socplan3.contact_id";
+
+    public static Intent newIntent(Context packageContext, UUID contactId) {
+        Intent intent = new Intent(packageContext, ViewContactActivity.class);
+        intent.putExtra(EXTRA_CONTACT_ID, contactId);
+        return intent;
+    }
 
     public static Intent getIntent(Context context) {
-        Intent intent = new Intent(context, AddContactActivity.class);
+        Intent intent = new Intent(context, ViewContactActivity.class);
         return intent;
     }
 
@@ -25,7 +35,7 @@ public class ContactListActivity extends AppCompatActivity {
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
         if (fragment == null){
-            fragment = new AddContactFragment();
+            fragment = new ViewContactFragment();
             fm.beginTransaction()
                     .add(R.id.fragment_container, fragment)
                     .commit();

@@ -19,7 +19,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AddContactActivity" android:label="Добавить контакт" android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".AddContactActivity"
+            android:label="Добавить контакт"
+            android:parentActivityName=".MainActivity"/>
+
+        <activity
+            android:name=".ViewContactActivity"
+            android:label="Просмотр контакта"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
