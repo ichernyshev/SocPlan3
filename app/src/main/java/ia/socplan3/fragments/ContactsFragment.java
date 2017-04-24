@@ -54,8 +54,15 @@ public class ContactsFragment extends Fragment {
     private void updateUI() {
         ContactLab contactLab = ContactLab.get(getActivity());
         List<OneContact> oneContacts = contactLab.getContacts();
-        mAdapter = new ContactAdapter(oneContacts);
-        mContactRecyclerView.setAdapter(mAdapter);
+
+        if (mAdapter == null) {
+            mAdapter = new ContactAdapter(oneContacts);
+            mContactRecyclerView.setAdapter(mAdapter);
+        } else {
+            mAdapter.setOneContacts(oneContacts);
+            mAdapter.notifyDataSetChanged();
+        }
+
     }
 
     @Override
@@ -63,6 +70,12 @@ public class ContactsFragment extends Fragment {
     {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        updateUI();
     }
 
     private class ContactHolder extends RecyclerView.ViewHolder {
@@ -75,9 +88,9 @@ public class ContactsFragment extends Fragment {
 
         public ContactHolder(View itemView) {
             super(itemView);
-            mNameTextView = (TextView) itemView.findViewById(R.id.etName);
-            mSecondNameTextView = (TextView) itemView.findViewById(R.id.etSecondName);
-            mPhone = (TextView) itemView.findViewById(R.id.etPhone);
+            mNameTextView = (TextView) itemView.findViewById(R.id.list_item_name);
+            mSecondNameTextView = (TextView) itemView.findViewById(R.id.list_item_secondname);
+            mPhone = (TextView) itemView.findViewById(R.id.list_item_phone);
         }
 
         public void bindOneContact(OneContact oneContact) {
@@ -114,6 +127,10 @@ public class ContactsFragment extends Fragment {
         @Override
         public int getItemCount(){
             return mOneContacts.size();
+        }
+
+        public void setOneContacts(List<OneContact> oneContacts) {
+            mOneContacts = oneContacts;
         }
     }
 }

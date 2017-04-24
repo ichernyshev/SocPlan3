@@ -85,9 +85,7 @@ public class ContactLab {
         String uuidString = oneContact.getId().toString();
         ContentValues values = getContentValues(oneContact);
 
-        mDatabase.update(ContactTabel.TABLE_NAME, values,
-                ContactTabel.Cols.UUID + " = ?",
-                new String[] {uuidString});
+        mDatabase.update(ContactTabel.TABLE_NAME, values, ContactTabel.Cols.UUID + " = ?", new String[] {uuidString});
 
     }
 
@@ -95,9 +93,9 @@ public class ContactLab {
     private static ContentValues getContentValues(OneContact oneContact) {
         ContentValues values = new ContentValues();
         values.put(ContactTabel.Cols.UUID, oneContact.getId().toString());
-        values.put(ContactTabel.Cols.NAME, oneContact.getName().toString());
-        values.put(ContactTabel.Cols.SECOND_NAME, oneContact.getSecondName().toString());
-        values.put(ContactTabel.Cols.PHONE, oneContact.getPhone().toString());
+        values.put(ContactTabel.Cols.NAME, oneContact.getName());
+        values.put(ContactTabel.Cols.SECOND_NAME, oneContact.getSecondName());
+        values.put(ContactTabel.Cols.PHONE, oneContact.getPhone());
 
         return values;
     }

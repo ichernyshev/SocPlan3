@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="4dp"
+        android:textSize="18sp"
         tools:text="Имя"/>
 
     <TextView
@@ -17,16 +18,24 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/list_item_name"
         android:padding="4dp"
-        android:textSize="10sp"
+        android:textSize="14sp"
         tools:text="Телефон"/>
 
     <TextView
         android:id="@+id/list_item_secondname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
         android:layout_toRightOf="@+id/list_item_name"
-        android:text="TextView"
         android:padding="4dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="bold"
         tools:text="Фамилия"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/list_item_phone"
+        android:background="@color/common_google_signin_btn_text_light_default"
+        />
 </RelativeLayout>
