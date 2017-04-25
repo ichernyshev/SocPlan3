@@ -39,7 +39,6 @@ public class MapsFragment extends Fragment {
         mTabHost.addTab(mTabHost.newTabSpec("simple").setIndicator("Map"), ContactsFragment.class, null);
         mTabHost.addTab(mTabHost.newTabSpec("asd").setIndicator("Joasd"), EventsFragment.class, null);
 
-
         return mTabHost;
     }
 
