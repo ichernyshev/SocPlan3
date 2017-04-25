@@ -2,6 +2,7 @@ package ia.socplan3.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,8 @@ import ia.socplan3.R;
 
 
 public class MapsFragment extends Fragment {
+
+    private FragmentTabHost mTabHost;
 
 
     public static MapsFragment newInstance() {
@@ -29,18 +32,15 @@ public class MapsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_maps, container, false);
 
-        TabHost tabHost = (TabHost) v.findViewById(R.id.tabhost);
-        tabHost.setup();
+        mTabHost = new FragmentTabHost(getActivity());
+        mTabHost.setup(getActivity(), getChildFragmentManager(), R.id.tabhost);
 
-        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("Карта").setContent(R.id.tab1));
+        mTabHost.addTab(mTabHost.newTabSpec("simple").setIndicator("Map"), ContactsFragment.class, null);
+        mTabHost.addTab(mTabHost.newTabSpec("asd").setIndicator("Joasd"), EventsFragment.class, null);
 
-        tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("Посещенные места").setContent(R.id.tab2));
 
-        tabHost.setCurrentTabByTag("tag2");
-
-        return v;
+        return mTabHost;
     }
 
 }

@@ -41,7 +41,7 @@ public class ContactsFragment extends Fragment {
         updateUI();
 
         //метод вызывающий Activity при нажатии на плавающую кнопку
-        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab_contact);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
